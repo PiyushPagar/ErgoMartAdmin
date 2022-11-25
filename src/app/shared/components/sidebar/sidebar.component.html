@@ -1,0 +1,33 @@
+<mat-nav-list>
+    <div class="profile-card">
+       
+        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Soufiane FADIL">
+        <div class="header">
+            <h2>Soufiane FADIL</h2>
+            <h4>example@email.com</h4>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <h2 matSubheader>Pages</h2>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/admin">Dashboard</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/inventory">Inventory</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/notification">Notification</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/order">Order</a>
+    <mat-divider></mat-divider>
+
+    <h2 matSubheader>Tools</h2>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+        <mat-icon>settings icon</mat-icon>
+        Setting
+    </a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/">
+        <mat-icon>Logout</mat-icon>
+        Logout
+    </a>
+
+</mat-nav-list>

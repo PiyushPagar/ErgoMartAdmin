@@ -1,0 +1,21 @@
+  footer {
+    padding: 10px;
+    border-top: 1px solid white;
+    justify-content:center;
+       align-items:center;
+       text-align: center;
+    
+    }
+     
+     .phone {
+       color: darkgrey;
+       font-size: 14px;
+       margin:auto;
+      
+     }
+     
+     .address {
+       color: darkgrey;
+       font-size: 14px;
+     margin:auto;
+     }
