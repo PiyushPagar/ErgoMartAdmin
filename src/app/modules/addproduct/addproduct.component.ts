@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProductapiService } from 'src/app/_services/product/productapi.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-addproduct',
@@ -17,13 +17,14 @@ export class AddproductComponent implements OnInit {
     'Pearsonal Care',
   ];
   //cheak redio button
-
+  
   productForm!: FormGroup;
-
+  actionBtn : string="Save"
   constructor(
     private formBuilder: FormBuilder,
     private api: ProductapiService,
-    private dailogRef: MatDialogRef<AddproductComponent>
+    private dailogRef: MatDialogRef<AddproductComponent>,
+    @Inject(MAT_DIALOG_DATA) public editData:any
   ) {}
 
   ngOnInit(): void {
@@ -36,22 +37,52 @@ export class AddproductComponent implements OnInit {
       category: ['', Validators.required],
       quantity: ['', Validators.required],
     });
+    console.log(this.editData);
+    if(this.editData){
+      this.actionBtn="Update"
+      this.productForm.controls['productName'].setValue(this.editData.name);
+      this.productForm.controls['productPrice'].setValue(this.editData.price);
+      this.productForm.controls['imageUrl'].setValue(this.editData.imageUrl);
+      this.productForm.controls['popularProduct'].setValue(this.editData.ispopular);
+      this.productForm.controls['productStatus'].setValue(this.editData.status);
+      this.productForm.controls['category'].setValue(this.editData.category.title);
+      this.productForm.controls['quantity'].setValue(this.editData.inventory.quantity);
+    }
   }
 
   addProduct() {
     console.log(this.productForm.value);
-    if (this.productForm.valid) {
-      this.api.postProduct(this.productForm.value).subscribe({
-        next: (res) => {
-          alert('Product Added Sucessfully'), console.log(res);
-          this.productForm.reset();
-          this.dailogRef.close('save');
-        },
-        error: () => {
-          alert('Product is not added');
-          console.log('error to add product');
-        },
-      });
+    if(!this.editData){
+      if (this.productForm.valid) {
+        this.api.postProduct(this.productForm.value).subscribe({
+          next: (res) => {
+            alert('Product Added Sucessfully'), console.log(res);
+            this.productForm.reset();
+            this.dailogRef.close('save');
+          },
+          error: () => {
+            alert('Product is not added');
+            console.log('error to add product');
+          },
+        });
+      }
+    }else{
+      this.updateProduct();
     }
+  }
+
+  updateProduct(){
+    this.api.putProduct(this.productForm.value,this.editData.id)
+    .subscribe({
+      next:(res)=>{
+        alert("Product updated sucessful");
+        console.log(res);
+        this.productForm.reset;
+        this.dailogRef.close('update');
+      },
+      error:()=>{
+        alert("error")
+      }
+    })
   }
 }

@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Image</h1>
+<div>
+<div mat-drawer-container>
+ 
+  <form [formGroup]="imageForm" >
+    <input class="form-control" type="file" multiple value="select" #selectFile 
+    />
+    <p></p>
+  </form>
+</div>
+<button style="margin-left: 10px" mat-raised-button color="primary" >
+ Upload
+</button>
+  <img id="myimage" src="{{ valueofimage }}" />
+</div>

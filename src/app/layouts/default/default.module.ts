@@ -21,15 +21,34 @@ import {MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSortModule} from '@angular/material/sort';
-
+import {MatSliderModule} from '@angular/material/slider';
+import { OrdersComponent } from 'src/app/modules/orders/orders.component';
+import { OrdersDetailsComponent } from 'src/app/modules/orders-details/orders-details.component';
+import { EditOrderComponent } from 'src/app/modules/edit-order/edit-order.component';
+import { NotificationComponent } from 'src/app/modules/notification/notification.component';
+import { AddNotificationComponent } from 'src/app/modules/add-notification/add-notification.component';
+import { SendNotificationComponent } from 'src/app/modules/send-notification/send-notification.component';
+import { ViewImageComponent } from 'src/app/modules/view-image/view-image.component';
+import { NotificationLogComponent } from 'src/app/modules/notification-log/notification-log.component';
+import { BrowserModule } from '@angular/platform-browser';
 @NgModule({
   declarations: [
     DefaultComponent,
     AdminComponent,
     InventoryComponent,
-    AddproductComponent
+    AddproductComponent,
+    OrdersComponent,
+    OrdersDetailsComponent,
+    EditOrderComponent,
+    NotificationComponent,
+    AddNotificationComponent,
+    SendNotificationComponent,
+    ViewImageComponent,
+    NotificationLogComponent,
+  
   ],
   imports: [
+    BrowserModule,
     CommonModule,
     RouterModule,
     SharedModule,
@@ -49,7 +68,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatIconModule,
     ReactiveFormsModule,
     FormsModule,
-    MatSortModule
+    MatSortModule,
+    MatSliderModule
   ]
 })
 export class DefaultModule { }

@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Edit Order Status</h1>
+<div mat-dialog-content>
+  <form [formGroup]="orderForm" >
+    <mat-form-field appearance="fill">
+        <mat-label>Order Status</mat-label>
+        <mat-select formControlName="orderStatus">
+          <mat-option value="INIT">INIT</mat-option>
+          <mat-option value="DELIVERED">DELIVERED</mat-option>
+          <mat-option value="INPROGRESS">INPROGRESS</mat-option>
+          <mat-option value="CANCELLED">CANCELLED</mat-option>
+        </mat-select>
+      </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+  <button style="margin-left: 10px" mat-raised-button color="primary" (click)="updateOrder()">
+    save
+  </button>
+</div>

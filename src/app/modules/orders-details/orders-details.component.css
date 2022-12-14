@@ -1,0 +1,40 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  
+  }
+  mat-drawer {
+    width: 350px;
+  }
+  
+  mat-drawer-container {
+    padding: 20px;
+    height: 100%;
+  }
+  
+  mat-drawer-content {
+    padding: 20px;
+  }
+  
+  table {
+    height: 50;
+    width: 100%;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  mat-raised-button {
+    flex: 1 1 auto;
+  }
+  mat-slider {
+    width: 300px;
+  }
+  .example-card {
+    max-width: 400px;
+  }
+  p { margin: 1px;
+  }
+  h2 { margin: 5px; }
+  h4 { margin: 5px; }

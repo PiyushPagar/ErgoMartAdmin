@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         }
       },
       (error)=>{
-        alert("wrong cridentails")
+        // alert("wrong cridentails")
         console.log(error);
       }
     )
