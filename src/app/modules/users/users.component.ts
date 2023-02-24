@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  sideBarOpen = true;
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
-
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
 }

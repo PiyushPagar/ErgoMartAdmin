@@ -9,13 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DefaultModule } from './layouts/default/default.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from "./shared/shared.module";
-import { OrdersDetailsComponent } from './modules/orders-details/orders-details.component';
-import { EditOrderComponent } from './modules/edit-order/edit-order.component';
-import { NotificationComponent } from './modules/notification/notification.component';
-import { AddNotificationComponent } from './modules/add-notification/add-notification.component';
-import { SendNotificationComponent } from './modules/send-notification/send-notification.component';
-import { ViewImageComponent } from './modules/view-image/view-image.component';
-import { NotificationLogComponent } from './modules/notification-log/notification-log.component';
+
 
 
 
