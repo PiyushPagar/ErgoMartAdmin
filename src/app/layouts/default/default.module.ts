@@ -31,6 +31,8 @@ import { SendNotificationComponent } from 'src/app/modules/send-notification/sen
 import { ViewImageComponent } from 'src/app/modules/view-image/view-image.component';
 import { NotificationLogComponent } from 'src/app/modules/notification-log/notification-log.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { UsersComponent } from 'src/app/modules/users/users.component';
+
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -45,7 +47,7 @@ import { BrowserModule } from '@angular/platform-browser';
     SendNotificationComponent,
     ViewImageComponent,
     NotificationLogComponent,
-  
+    UsersComponent
   ],
   imports: [
     BrowserModule,

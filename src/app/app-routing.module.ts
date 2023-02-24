@@ -8,7 +8,6 @@ import { NotificationComponent } from './modules/notification/notification.compo
 import { OrdersComponent } from './modules/orders/orders.component';
 
 
-
 const routes: Routes = [
   {path: "",  component: LoginComponent, pathMatch: "full"},
   {path:'admin',component:AdminComponent},
@@ -16,6 +15,7 @@ const routes: Routes = [
   {path:'order',component:OrdersComponent},
   {path:'notification',component:NotificationComponent},
   {path:'notificationlog',component:NotificationLogComponent}
+  
 ];
 
 @NgModule({
