@@ -1,12 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { GlobalComponent } from '../GlobalVeriables/global-component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthService {
 
-  constructor() {  }
+  constructor(private http :HttpClient) {  }
   
+  doLogin(credentials:any){
+    return this.http.post(`${GlobalComponent.appUrl}api/auth/signin`,credentials)
+  } 
+
     public setRoles(roles :string) {
       localStorage.setItem("roles",roles);
    }
@@ -24,12 +30,20 @@ export class UserAuthService {
     return localStorage.getItem("jwtToken");
    }
 
-   public clear(){
-    localStorage.clear;
+   isLoggedIn()
+   {
+     var token = this.getToken();
+     if(token==undefined || token== '' || token==null)
+     {
+       return false;
+     }else{
+       return true;
+     }
    }
-
-   public isLoggedIn(){
-    return this.getRoles() ;
+ 
+   logout(){
+     localStorage.clear();
+     return true;
    }
 
 }

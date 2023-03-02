@@ -1,25 +1,43 @@
-<div class="container mt-5">
-    <div class="card" style="padding: 20px;">
-        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-            <input type="text"
-            ngModel
-            name="email"
-            id="email"
-            placeholder="Enter your email"
-            class="form-control mb-3"
-            >
-
-            <input type="password"
-            ngModel
-            name="password"
-            id="password"
-            placeholder="Enter your password"
-            class="form-control mb-3"
-            >
-
-            <input type="submit"
-            value="Login" 
-            class="btn btn-outline-primary form-control rounded-0">
-        </form>
+<div class="container mt">
+  <form (ngSubmit)="OnSubmit()">
+    <h2>Login</h2>
+    <div class="form-group">
+      <label for="username">Email</label>
+      <input
+        [(ngModel)]="credentials.email"
+        required
+        type="email"
+        name="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter email"
+      />
     </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        [(ngModel)]="credentials.password"
+        required
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        placeholder="Password"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <span class="new-span"></span>
+    <button
+      type="submit"
+      routerLink="/newclientregistration"
+      class="btn btn-primary"
+      style="margin-top: 5%"
+    >
+      Registration
+    </button>
+
+    <span class="new-span" routerLink="/newclientregistration"></span>
+  </form>
+  <br />
+  {{ credentials | json }}
 </div>
