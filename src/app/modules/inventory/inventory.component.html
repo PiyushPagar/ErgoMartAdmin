@@ -1,14 +1,17 @@
 <app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
 
-<div id="page">
+
 <mat-drawer-container>
   <mat-drawer mode="side" [opened]="sideBarOpen">
     <app-sidebar></app-sidebar>
   </mat-drawer>
   <mat-drawer-content>
-    <button mat-raised-button (click)="openDialog()" color="primary">
-      Add Product
-    </button>
+    <div>
+      <button mat-raised-button (click)="openDialog()" color="primary">
+        Add Product
+      </button>
+      <p></p>
+    </div>
     <div mat-dialog-content>
       <form [formGroup]="searchForm">
         <mat-form-field appearance="outline">
@@ -23,7 +26,7 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Price</mat-label>
-          <input formControlName="price" matInput placeholder="eg : mango" />
+          <input formControlName="price" matInput placeholder="eg : 100" />
           <mat-hint></mat-hint>
         </mat-form-field>
 
@@ -176,5 +179,5 @@
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
-</div>
+
 <app-footer></app-footer>

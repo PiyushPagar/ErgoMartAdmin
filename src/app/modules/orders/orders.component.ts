@@ -54,7 +54,7 @@ export class OrdersComponent implements OnInit {
   }
 
   getAllOrders() {
-    const param = new HttpParams().set('pagenum',0).set('pagesize',40).set('orderStatus',this.searchForm.value.orderStatus).set('userId',this.searchForm.value.userId)
+    const param = new HttpParams().set('pagenum',0).set('pagesize',100).set('orderStatus',this.searchForm.value.orderStatus).set('userId',this.searchForm.value.userId)
      .set('price',this.searchForm.value.price)
     return this.http
       .get<any>(

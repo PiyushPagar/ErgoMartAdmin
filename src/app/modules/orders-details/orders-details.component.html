@@ -1,16 +1,16 @@
 <div *ngFor="let row of responseData">
   <h2>OrderId:-{{ row.id }}</h2>
-  <h4> <strong> Address:-</strong></h4>
+  <h4><strong>Address:-</strong></h4>
   <p>
-    {{ row.address.address_line1 }}
-    {{ row.address.address_line2 }}
+    {{ row.addressResponse.address_line1 }}
+    {{ row.addressResponse.address_line2 }}
   </p>
   <p>
-    {{ row.address.city }}-
-    {{ row.address.pincode }}
+    {{ row.addressResponse.city }}-
+    {{ row.addressResponse.pincode }}
   </p>
   <p>
-    {{ row.address.mobile_no }}
+    {{ row.addressResponse.mobile_no }}
   </p>
   <br>
 </div>
@@ -37,7 +37,28 @@
   </table>
 </div>
 
-<div *ngFor="let row of responseData">
+<div  *ngFor="let row of responseData">
   <br />
-  <h2>Total:- {{ row.totalprice }}</h2>
+  <h2>Total:- {{ row.totalprice + row.priceCutFromWallet }}</h2>
+</div>
+
+<div *ngFor="let row of responseData">
+  <div *ngIf="row.avoidRinging || row.leaveAtDoor || row.avoidCalling || row.leaveWithSecurity">
+    <h2>Delivery Instructions - </h2>
+  </div>
+  <div  *ngIf="row.avoidRinging" class="alert alert-secondary" role="alert">
+    Avoid ringing bell
+  </div>
+  <div *ngIf="row.leaveAtDoor" class="alert alert-secondary" role="alert">
+    Leave at the door
+  </div>
+  <div *ngIf="row.deliveryInstructions" class="alert alert-secondary" role="alert">
+   {{row.deliveryInstructions}}
+  </div>
+  <div *ngIf="row.avoidCalling" class="alert alert-secondary" role="alert">
+    Avoid Calling
+  </div>
+  <div *ngIf="row.leaveWithSecurity" class="alert alert-secondary" role="alert">
+    Leave with Security
+  </div>
 </div>

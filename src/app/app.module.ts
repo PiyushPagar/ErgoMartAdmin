@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DefaultModule } from './layouts/default/default.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from "./shared/shared.module";
+import { ShowRevenueCardComponent } from './modules/dashboard/show-revenue-card/show-revenue-card.component';
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
     declarations: [
         AppComponent,
         LoginComponent,
+        ShowRevenueCardComponent,
        
     ],
     providers: [],

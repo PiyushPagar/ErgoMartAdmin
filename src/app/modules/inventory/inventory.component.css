@@ -9,12 +9,15 @@ mat-drawer {
 }
 
 mat-drawer-container {
-  padding: 20px;
+  /* padding: 20px; */
   height: 100%;
 }
 
 mat-drawer-content {
   padding: 20px;
+}
+mat-drawer {
+  width: 350px;
 }
 
 table {
