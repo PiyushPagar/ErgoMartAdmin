@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddNotificationComponent } from 'src/app/modules/add-notification/add-notification.component';
 import { SendNotificationComponent } from 'src/app/modules/send-notification/send-notification.component';
+import { UserAuthService } from 'src/app/_services/user-auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ export class HeaderComponent implements OnInit {
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
   constructor(
     private dialog: MatDialog,
+    private userAuthService:UserAuthService
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,13 @@ export class HeaderComponent implements OnInit {
     }).afterClosed().subscribe(val=>{
      
     })
+  }
+
+
+  logoutUser()
+  {
+    this.userAuthService.logout();
+    location.reload();
   }
   
 

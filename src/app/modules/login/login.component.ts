@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  credentials = {
+    email: '',
+    password: '',
+  };
   constructor(
     private userService:UserService,
     private userAuthService:UserAuthService,
@@ -20,24 +23,31 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login( loginForm: NgForm){
-    this.userService.login(loginForm.value).subscribe(
-      (response:any)=>{
-        console.log(response);
-        console.log(response.result.jwtToken);
-        console.log(response.result.role);
-
-        this.userAuthService.setRoles(response.result.role);
-        this.userAuthService.setToken(response.result.jwtToken);
-        const role=response.result.role;
-        if(role==='ROLE_ADMIN'){
-          this.router.navigate(['admin']);
+  OnSubmit() {
+    
+    if (
+      this.credentials.email != '' &&
+      this.credentials.password != '' &&
+      this.credentials.email != null &&
+      this.credentials.password != null
+    ) {
+      console.log('form is submitted');
+      this.userAuthService.doLogin(this.credentials).subscribe(
+        (response:any)=>{
+            console.log(response.id);
+            this.userAuthService.setToken(response.result.jwtToken);
+            this.userAuthService.setRoles(response.result.role);
+            // console.log(this.loginService.isLoggedIn());
+              window.location.href="/admin";
+        },
+        error=>{
+          console.log(error);
         }
-      },
-      (error)=>{
-        // alert("wrong cridentails")
-        console.log(error);
-      }
-    )
+      )
+
+    }else{
+
+      alert("field is empty")
+    }
   }
 }
