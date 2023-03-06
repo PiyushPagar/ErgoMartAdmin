@@ -6,12 +6,14 @@ import { LoginComponent } from './modules/login/login.component';
 import { NotificationLogComponent } from './modules/notification-log/notification-log.component';
 import { NotificationComponent } from './modules/notification/notification.component';
 import { OrdersComponent } from './modules/orders/orders.component';
+import {UsersComponent} from './modules/users/users.component';
 import { AuthGuard } from './_services/auth.guard';
 
 
 const routes: Routes = [
   {path: "",  component: LoginComponent, pathMatch: "full"},
   {path:'admin',component:AdminComponent,canActivate:[AuthGuard]},
+  {path:'users',component:UsersComponent,canActivate:[AuthGuard]},
   {path:'inventory',component:InventoryComponent,canActivate:[AuthGuard]},
   {path:'order',component:OrdersComponent,canActivate:[AuthGuard]},
   {path:'notification',component:NotificationComponent,canActivate:[AuthGuard]},
