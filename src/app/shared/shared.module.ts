@@ -12,7 +12,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { RevenueOrderChartComponent } from './widgets/revenue-order-chart/revenue-order-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
-
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -29,6 +29,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
+    MatInputModule,
     MatListModule,
     RouterModule,
     HighchartsChartModule

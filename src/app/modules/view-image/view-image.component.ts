@@ -1,3 +1,4 @@
+import { ProductapiService } from 'src/app/_services/product/productapi.service';
 import {
   HttpClient,
   HttpEvent,
@@ -38,6 +39,7 @@ export class ViewImageComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private uploadService: FileUploadService,
+    private productService: ProductapiService,
     private sanitizer: DomSanitizer,
     private dailogRef: MatDialogRef<ViewImageComponent>,
     @Inject(MAT_DIALOG_DATA) public editData: any
@@ -55,17 +57,50 @@ export class ViewImageComponent implements OnInit {
   onFileSelected(event: any) {
     console.log(event);
     if (event.target.files) {
-      const file = event.target.files[0];
+     this.currentFileUpload= event.target.files[0];
     }
   }
 
   viewImage(editData: any) {
-    console.log(GlobalComponent.imageUrl + editData.imageUrl);
+    console.log(GlobalComponent.imageUrl + editData.data.imageUrl);
     if (this.editData.imageUrl == '') {
       this.valueofimage = GlobalComponent.imageUrl + 'default.png';
     } else {
-      this.valueofimage = GlobalComponent.imageUrl + this.editData.imageUrl;
+      this.valueofimage = GlobalComponent.imageUrl + this.editData.data.imageUrl;
     }
+  }
+
+  updateProductImage() {
+    const imageData = new FormData();
+    imageData.append('image', this.currentFileUpload);
+      if(this.imageForm.valid && this.editData){
+        const param = new HttpParams()
+        .set('productId', this.editData.data.id);
+       this.http
+        .put<any>(
+          GlobalComponent.appUrl + 'api/auth/updateProductImage',imageData,
+          { params: param }
+        )
+        .subscribe({
+          next: (res) => {
+            console.log(res);
+            if(res){
+              this.valueofimage = GlobalComponent.imageUrl + res.imageUrl;
+              this.editData.parent.getAllProducts();
+            }
+            alert("Image Updated Successfully");
+          },
+          error: () => {
+            alert("Image not Updating something went wrong");
+            console.log('error');
+          },
+        });
+      }else{
+        Object.keys(this.imageForm.controls).forEach(field => {
+          const control = this.imageForm.get(field);
+          control!.markAsTouched({ onlySelf: true });
+        });
+      }
   }
 
 

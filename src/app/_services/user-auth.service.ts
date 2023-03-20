@@ -8,13 +8,19 @@ import { GlobalComponent } from '../GlobalVeriables/global-component';
 export class UserAuthService {
 
   constructor(private http :HttpClient) {  }
-  
+
   doLogin(credentials:any){
     return this.http.post(`${GlobalComponent.appUrl}api/auth/signin`,credentials)
-  } 
+  }
 
     public setRoles(roles :string) {
       localStorage.setItem("roles",roles);
+   }
+
+   public setUserInfo(data :any) {
+    localStorage.setItem("userId",data.id);
+    localStorage.setItem("userName",data.firstName+" "+data.lastName);
+    localStorage.setItem("userEmail",data.email);
    }
 
    public getRoles(){
@@ -40,7 +46,7 @@ export class UserAuthService {
        return true;
      }
    }
- 
+
    logout(){
      localStorage.clear();
      return true;

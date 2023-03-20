@@ -13,10 +13,8 @@ import { ShowRevenueCardComponent } from './modules/dashboard/show-revenue-card/
 
 
 
-
-
 const routes: Routes = [
-  
+
 ];
 
 @NgModule({
@@ -24,7 +22,6 @@ const routes: Routes = [
         AppComponent,
         LoginComponent,
         ShowRevenueCardComponent,
-       
     ],
     providers: [],
     bootstrap: [AppComponent],

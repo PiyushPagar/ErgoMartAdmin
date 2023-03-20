@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>Add Discount</h1>
+<div mat-dialog-content>
+  <form [formGroup]="discountForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Discount Name</mat-label>
+      <input [(ngModel)]="addDiscount.name" formControlName="name" matInput required placeholder="eg : festival" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="discountForm.get('name')!.hasError('required')">Discount name is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Discount Description</mat-label>
+      <input [(ngModel)]="addDiscount.description" formControlName="description" matInput required placeholder="eg : festival" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="discountForm.get('description')!.hasError('required')">Discount description is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Discount Percent</mat-label>
+      <input [(ngModel)]="addDiscount.discount_percent" formControlName="discount_percent" matInput required placeholder="eg : 15%" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="discountForm.get('discount_percent')!.hasError('required')">Discount Percent is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="addDiscount.status" formControlName="status">
+        <mat-option value="active">Active</mat-option>
+        <mat-option value="inactive">InActive</mat-option>
+      </mat-select>
+      <mat-error *ngIf="discountForm.get('status')!.hasError('required')">Discount Status is required.</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+  <button style="margin-left: 10px" mat-raised-button color="primary" (click)="addNewDiscount()">
+    Add
+  </button>
+</div>
+
+

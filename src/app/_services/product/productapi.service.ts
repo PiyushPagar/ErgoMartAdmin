@@ -10,8 +10,13 @@ export class ProductapiService {
   constructor(private http:HttpClient) { }
 
 
+  getAllProducts(param :any){
+    return this.http.get<any>(GlobalComponent.appUrl + 'api/auth/fetchlistofproductbyfilter',
+    { params: param });
+  }
+
   postProduct(data :any){
-    return this.http.post<any>(GlobalComponent.appUrl+"addProduct/",data);
+    return this.http.post<any>(GlobalComponent.appUrl+"api/auth/addNewProduct",data);
   }
 
   putProduct(data :any,id:number){
@@ -21,5 +26,5 @@ export class ProductapiService {
   deleteProduct(id:number){
     return this.http.delete<any>(GlobalComponent.appUrl+"deleteProduct/"+id);
   }
-  
+
 }

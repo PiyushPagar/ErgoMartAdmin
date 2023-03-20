@@ -1,0 +1,60 @@
+<h1 mat-dialog-title>Register New User</h1>
+<div mat-dialog-content>
+  <form [formGroup]="userForm" >
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input   [(ngModel)]="newUserCredentials.firstName"
+      required formControlName="firstname" matInput placeholder="eg : xyz" type="text"/>
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="userForm.get('firstname')!.hasError('required')">First Name is required.</mat-error>
+      <mat-error *ngIf="userForm.get('firstname')!.hasError('pattern')">First Name should only contain letters and spaces.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input  [(ngModel)]="newUserCredentials.lastName"
+      required formControlName="lastname" matInput placeholder="eg : xyz" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="userForm.get('lastname')!.hasError('required')">Last Name is required.</mat-error>
+      <mat-error *ngIf="userForm.get('lastname')!.hasError('pattern')">Last Name should only contain letters and spaces.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input  [(ngModel)]="newUserCredentials.email"
+      required formControlName="email" matInput placeholder="eg : xyz@gmail.com" type="email"/>
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="userForm.get('email')!.hasError('required')">Email is required.</mat-error>
+      <mat-error *ngIf="userForm.get('email')!.hasError('email')">Please enter valid Email.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Mobile Number</mat-label>
+      <input  [(ngModel)]="newUserCredentials.mobileNo"
+      required formControlName="mobileno" matInput placeholder="eg : 1234567890" type="text"/>
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="userForm.get('mobileno')!.hasError('required')">Mobile Number is required.</mat-error>
+      <mat-error *ngIf="userForm.get('mobileno')!.hasError('minlength')">Mobile Number should have at least 10 digits.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input  [(ngModel)]="newUserCredentials.password"
+      required formControlName="password" matInput placeholder="eg : "  type="password" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="userForm.get('password')!.hasError('required')">Password is required.</mat-error>
+      <mat-error *ngIf="userForm.get('password')!.hasError('minlength')">Password must be at least  {{minPassword}} characters long.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Confirm Password</mat-label>
+      <input formControlName="confirmpassword" matInput required  placeholder="eg : "  type="password"/>
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="userForm.get('confirmpassword')!.hasError('required')">Confirm Password is required.</mat-error>
+      <mat-error *ngIf="userForm.get('confirmpassword')!.hasError('mismatch')">Passwords do not match.</mat-error>
+      <!-- <mat-error *ngIf="checkConfirmPassword!.hasError('required')">Please confirm your password</mat-error>
+      <mat-error *ngIf="userForm.get('confirmpassword')!.invalid && (userForm.get('confirmpassword')!.dirty || userForm.get('confirmpassword')!.touched)">Passwords don't match</mat-error> -->
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+  <button style="margin-left: 10px" mat-raised-button color="primary" (click)="addNewUser()">
+    {{actionBtn}}
+  </button>
+</div>

@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>Add Offer</h1>
+<div mat-dialog-content>
+  <form [formGroup]="offerForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Offer Name</mat-label>
+      <input [(ngModel)]="addOffer.name" formControlName="name" matInput required placeholder="eg : seasons" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="offerForm.get('name')!.hasError('required')">Offer name is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Offer Code</mat-label>
+      <input [(ngModel)]="addOffer.offercode" formControlName="offercode" matInput required placeholder="eg : 123456" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="offerForm.get('offercode')!.hasError('required')">Offer code is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Offer flag</mat-label>
+      <mat-select formControlName="flag">
+        <mat-option value="true">Yes</mat-option>
+        <mat-option value="false">No</mat-option>
+      </mat-select>
+      <mat-error *ngIf="offerForm.get('flag')!.hasError('required')">Offer flag is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="addOffer.status" formControlName="status">
+        <mat-option value="active">Active</mat-option>
+        <mat-option value="inactive">InActive</mat-option>
+      </mat-select>
+      <mat-error *ngIf="offerForm.get('status')!.hasError('required')">Offer Status is required.</mat-error>
+    </mat-form-field>
+    <div class="uploadImage">
+      <input  formControlName="imageUrl" class="form-control" type="file" #fileInput required
+        (change)="onFileUpload($event)" />
+        <mat-error  *ngIf="!offerForm.controls['imageUrl'].valid && offerForm.controls['imageUrl'].touched"> Please select an image.</mat-error>
+    </div>
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+  <button style="margin-left: 10px" mat-raised-button color="primary" (click)="addNewOffer()">
+    Add
+  </button>
+</div>

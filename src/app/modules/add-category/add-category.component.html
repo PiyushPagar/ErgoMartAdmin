@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Add Category</h1>
+<div mat-dialog-content>
+  <form [formGroup]="categoryForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Category title</mat-label>
+      <input [(ngModel)]="addCategory.title" formControlName="title" matInput required placeholder="eg : mango" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="categoryForm.get('title')!.hasError('required')">category title is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Category Metadata</mat-label>
+      <input [(ngModel)]="addCategory.metatitle" formControlName="metadata" matInput required placeholder="eg : mango" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="categoryForm.get('metadata')!.hasError('required')">category metadata is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Category Content</mat-label>
+      <input [(ngModel)]="addCategory.content" formControlName="content" matInput required placeholder="eg : 100" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="categoryForm.get('content')!.hasError('required')">category content is required.</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+  <button style="margin-left: 10px" mat-raised-button color="primary" (click)="addNewCategory()">
+    Add
+  </button>
+</div>
+

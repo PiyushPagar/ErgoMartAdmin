@@ -1,3 +1,4 @@
+import { AddUserComponent } from 'src/app/modules/add-user/add-user.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { GlobalComponent } from 'src/app/GlobalVeriables/global-component';
@@ -78,6 +79,19 @@ export class UsersComponent implements OnInit {
           //alert("error");
           console.log('error');
         },
+      });
+  }
+
+  addNewUSer() {
+    this.dialog
+      .open(AddUserComponent, {
+        width: '30%',
+      })
+      .afterClosed()
+      .subscribe((val) => {
+        if (val === 'save') {
+          // this.getAllProducts();
+        }
       });
   }
 }

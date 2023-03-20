@@ -1,39 +1,71 @@
-<h1 mat-dialog-title>Add Product</h1>
+<h1 mat-dialog-title>{{dialogTitle}}</h1>
 <div mat-dialog-content>
-  <form [formGroup]="productForm" >
+  <form [formGroup]="productForm">
     <mat-form-field appearance="outline">
       <mat-label>Product Name</mat-label>
-      <input formControlName="productName" matInput placeholder="eg : mango" />
+      <input formControlName="productName" matInput required placeholder="eg : mango" />
       <mat-hint></mat-hint>
+      <mat-error *ngIf="productForm.get('productName')!.hasError('required')">Product Name is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Product Description</mat-label>
+      <input formControlName="description" matInput required placeholder="eg : mango" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="productForm.get('description')!.hasError('required')">Product description is required.</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Price</mat-label>
-      <input  formControlName="productPrice" matInput placeholder="eg : 100" />
+      <input formControlName="productPrice" matInput required placeholder="eg : 100" />
       <mat-hint></mat-hint>
+      <mat-error *ngIf="productForm.get('productPrice')!.hasError('required')">Product Price is required.</mat-error>
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <div class="uploadImage" *ngIf="showImageField">
+      <input  formControlName="imageUrl" class="form-control" type="file" #fileInput required
+        (change)="onFileChange($event)" />
+        <mat-error  *ngIf="!productForm.controls['imageUrl'].valid && productForm.controls['imageUrl'].touched"> Please select an image.</mat-error>
+    </div>
+    <!-- <mat-form-field appearance="outline">
       <mat-label>Image Url</mat-label>
       <input  formControlName="imageUrl" matInput placeholder="eg : orange.jpg" />
       <mat-hint></mat-hint>
-    </mat-form-field>
+    </mat-form-field> -->
     <mat-form-field appearance="fill">
       <mat-label>Add to Popular Product</mat-label>
-      <mat-select  formControlName="popularProduct">
+      <mat-select formControlName="popularProduct">
         <mat-option value="true">Yes</mat-option>
         <mat-option value="false">No</mat-option>
       </mat-select>
+      <mat-error *ngIf="productForm.get('popularProduct')!.hasError('required')">popular product or not is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Add to Subscribe Product</mat-label>
+      <mat-select formControlName="subscribeProduct">
+        <mat-option value="true">Yes</mat-option>
+        <mat-option value="false">No</mat-option>
+      </mat-select>
+      <mat-error *ngIf="productForm.get('subscribeProduct')!.hasError('required')">subscribe product or not is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Is Vegeterian ?</mat-label>
+      <mat-select formControlName="isVegeterian">
+        <mat-option value="true">Yes</mat-option>
+        <mat-option value="false">No</mat-option>
+      </mat-select>
+      <mat-error *ngIf="productForm.get('isVegeterian')!.hasError('required')">product is Veg or not is required.</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Status</mat-label>
-      <mat-select  formControlName="productStatus">
+      <mat-select formControlName="productStatus">
         <mat-option value="active">Active</mat-option>
         <mat-option value="inactive">InActive</mat-option>
       </mat-select>
+      <mat-error *ngIf="productForm.get('productStatus')!.hasError('required')">Product Status is required.</mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Catagory</mat-label>
-      <mat-select  formControlName="category">
-        <mat-option value="Fruits And Vegetable"
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let option of categoriesList" [value]="option.id">{{ option.title }}</mat-option>
+        <!-- <mat-option value="Fruits And Vegetable"
           >Fruits And Vegetable</mat-option
         >
         <mat-option value="Dairy">Dairy</mat-option>
@@ -41,19 +73,39 @@
           >Chocolate And Snacks</mat-option
         >
         <mat-option value="Home Essencials">Home Essencials</mat-option>
-        <mat-option value="Pearsonal Care">Pearsonal Care</mat-option>
+        <mat-option value="Pearsonal Care">Pearsonal Care</mat-option> -->
+      </mat-select>
+      <mat-error *ngIf="productForm.get('category')!.hasError('required')">Product Category is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Discount</mat-label>
+      <mat-select formControlName="discount">
+        <mat-option *ngFor="let option of discountsList" [value]="option.id">{{ option.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Offer</mat-label>
+      <mat-select formControlName="offer">
+        <mat-option *ngFor="let option of offersList" [value]="option.id">{{ option.name }}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Inventory</mat-label>
-      <input  formControlName="quantity" matInput placeholder="eg : 10 Product Avilable" />
+      <mat-label>Weight</mat-label>
+      <input formControlName="weight" matInput placeholder="eg : orange.jpg" />
       <mat-hint></mat-hint>
+      <mat-error *ngIf="productForm.get('weight')!.hasError('required')">Product Weight is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Quantity</mat-label>
+      <input formControlName="quantity" matInput placeholder="eg : orange.jpg" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="productForm.get('quantity')!.hasError('required')">Product quantity is required.</mat-error>
     </mat-form-field>
   </form>
 </div>
 <div mat-dialog-action [align]="'end'">
   <button mat-raised-button color="primary" mat-dialog-close>Close</button>
-  <button style="margin-left: 10px" mat-raised-button color="primary" (click)="addProduct()">
+  <button style="margin-left: 10px" mat-raised-button color="primary" (click)="addNewProduct()">
     {{actionBtn}}
   </button>
 </div>

@@ -5,6 +5,12 @@
         <app-sidebar></app-sidebar>
     </mat-drawer>
     <mat-drawer-content>
+      <div>
+        <button mat-raised-button (click)="addNewUSer()" color="primary">
+          Add New User
+        </button>
+        <p></p>
+      </div>
       <div mat-dialog-content>
         <form [formGroup]="searchForm">
           <mat-form-field appearance="outline">

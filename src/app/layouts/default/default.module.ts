@@ -32,6 +32,10 @@ import { ViewImageComponent } from 'src/app/modules/view-image/view-image.compon
 import { NotificationLogComponent } from 'src/app/modules/notification-log/notification-log.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { UsersComponent } from 'src/app/modules/users/users.component';
+import { AddUserComponent } from 'src/app/modules/add-user/add-user.component';
+import { AddCategoryComponent } from 'src/app/modules/add-category/add-category.component';
+import { AddDiscountComponent } from 'src/app/modules/add-discount/add-discount.component';
+import { AddOfferComponent } from 'src/app/modules/add-offer/add-offer.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,11 @@ import { UsersComponent } from 'src/app/modules/users/users.component';
     SendNotificationComponent,
     ViewImageComponent,
     NotificationLogComponent,
-    UsersComponent
+    UsersComponent,
+    AddUserComponent,
+    AddCategoryComponent,
+    AddDiscountComponent,
+    AddOfferComponent
   ],
   imports: [
     BrowserModule,

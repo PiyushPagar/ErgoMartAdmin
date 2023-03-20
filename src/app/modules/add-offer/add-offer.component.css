@@ -1,0 +1,10 @@
+mat-form-field{
+  width: 100%;
+}
+
+mat-dialog-title{
+  justify-content: center;
+}
+.uploadImage{
+margin-bottom: 20px;
+}

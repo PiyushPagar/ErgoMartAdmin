@@ -10,6 +10,15 @@
       <button mat-raised-button (click)="openDialog()" color="primary">
         Add Product
       </button>
+      <button style="margin-left: 30px" mat-raised-button (click)="addCategory()" color="primary">
+        Add Category
+      </button>
+      <button   style="margin-left: 30px" mat-raised-button (click)="addDiscount()" color="primary">
+        Add Discount
+      </button>
+      <button   style="margin-left: 30px" mat-raised-button (click)="addOffer()" color="primary">
+        Add Offer
+      </button>
       <p></p>
     </div>
     <div mat-dialog-content>
@@ -34,6 +43,8 @@
           <mat-label>Catagory</mat-label>
           <mat-select formControlName="category">
             <mat-option value="">all</mat-option>
+            <mat-option *ngFor="let option of categoryOptions" [value]="option.id">{{ option.title }}</mat-option>
+            <!-- <mat-option value="">all</mat-option>
             <mat-option value="Fruits And Vegetable"
               >Fruits And Vegetable</mat-option
             >
@@ -42,7 +53,7 @@
               >Chocolate And Snacks</mat-option
             >
             <mat-option value="Home Essencials">Home Essencials</mat-option>
-            <mat-option value="Pearsonal Care">Pearsonal Care</mat-option>
+            <mat-option value="Pearsonal Care">Pearsonal Care</mat-option> -->
           </mat-select>
         </mat-form-field>
 
