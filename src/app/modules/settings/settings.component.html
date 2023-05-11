@@ -1,0 +1,23 @@
+<app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
+
+
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div>
+      <button
+        style="margin-left: 30px"
+        mat-raised-button
+        routerLink="/applicationparameter"
+        color="primary"
+      >
+        Application Parameter
+      </button>
+      <p></p>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<app-footer></app-footer>

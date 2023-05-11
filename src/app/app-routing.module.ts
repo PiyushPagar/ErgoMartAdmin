@@ -8,6 +8,8 @@ import { NotificationComponent } from './modules/notification/notification.compo
 import { OrdersComponent } from './modules/orders/orders.component';
 import {UsersComponent} from './modules/users/users.component';
 import { AuthGuard } from './_services/auth.guard';
+import { SettingsComponent } from './modules/settings/settings.component';
+import { ApplicationParameterComponent } from './modules/application-parameter/application-parameter.component';
 
 
 const routes: Routes = [
@@ -17,7 +19,9 @@ const routes: Routes = [
   {path:'inventory',component:InventoryComponent,canActivate:[AuthGuard]},
   {path:'order',component:OrdersComponent,canActivate:[AuthGuard]},
   {path:'notification',component:NotificationComponent,canActivate:[AuthGuard]},
-  {path:'notificationlog',component:NotificationLogComponent,canActivate:[AuthGuard]}
+  {path:'notificationlog',component:NotificationLogComponent,canActivate:[AuthGuard]},
+  {path:'settings',component:SettingsComponent,canActivate:[AuthGuard]},
+  {path:'applicationparameter',component:ApplicationParameterComponent,canActivate:[AuthGuard]}
 
 ];
 

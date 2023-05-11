@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>{{screenTitle}} Parameter</h1>
+<div mat-dialog-content>
+  <form [formGroup]="applicationParameterForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Parameter code</mat-label>
+      <input [(ngModel)]="addParameter.code" formControlName="code" matInput required placeholder="eg : xyz" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="applicationParameterForm.get('code')!.hasError('required')">parameter code is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Parameter  Description</mat-label>
+      <input [(ngModel)]="addParameter.codeDesc" formControlName="codeDesc" matInput required placeholder="eg : xyz" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="applicationParameterForm.get('codeDesc')!.hasError('required')">parameter description is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Code Type</mat-label>
+      <input [(ngModel)]="addParameter.codeType" formControlName="codeType" matInput required placeholder="eg : SYSTEM" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="applicationParameterForm.get('codeType')!.hasError('required')">Parameter Code Type is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Parent Code</mat-label>
+      <input [(ngModel)]="addParameter.parentCode" formControlName="parentCode" matInput required placeholder="eg : xyz" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="applicationParameterForm.get('parentCode')!.hasError('required')">Parent Code is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Short Description</mat-label>
+      <input [(ngModel)]="addParameter.shortDesc" formControlName="shortDesc" matInput required placeholder="eg : xyz" />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="applicationParameterForm.get('shortDesc')!.hasError('required')">Short Description is required.</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <mat-select  formControlName="status" [(ngModel)]="addParameter.status">
+        <mat-option value="active">Active</mat-option>
+        <mat-option value="inactive">InActive</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+  <button style="margin-left: 10px" mat-raised-button color="primary" (click)="addApplicationParameter()">
+    {{screenTitle}}
+  </button>
+</div>
+

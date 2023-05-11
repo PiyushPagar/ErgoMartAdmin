@@ -9,12 +9,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 })
 export class ShowRevenueCardComponent implements OnInit {
 
-  todaysrevenue:any;
-  todaysadr:any;
-  todaysorders:any;
-  monthsRevenue:any;
-  monthsadr:any;
-  monthsorders:any;
+  performanceData:any;
 
   constructor(
     private api:DashboardApiService,
@@ -29,14 +24,8 @@ export class ShowRevenueCardComponent implements OnInit {
     this.api.getRevenueAdrAndOrders().subscribe(
       {
        next:(res)=>{
+        this.performanceData= res;
         console.log(res);
-        this.todaysrevenue=res.todaysPerformance.revenue.toFixed(2);
-        this.todaysadr=res.todaysPerformance.adr.toFixed(2);
-        this.todaysorders=res.todaysPerformance.orders;
-        this.monthsRevenue=res.monthlyPerformance.revenue.toFixed(2);
-        this.monthsadr=res.monthlyPerformance.adr.toFixed(2);
-        this.monthsorders=res.monthlyPerformance.orders;
-
        },
        error:(res)=>{
         console.log(res);

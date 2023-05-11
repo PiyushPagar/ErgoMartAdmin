@@ -20,8 +20,8 @@ export class OrdersDetailsComponent implements OnInit  {
   ];
   dataSource!: MatTableDataSource<any>;
   public responseData: any;
-  
-  
+
+
   constructor(
     private formBuilder: FormBuilder,
     private api: OrderApiService,
@@ -30,7 +30,7 @@ export class OrdersDetailsComponent implements OnInit  {
   ) { }
 
   ngOnInit(): void {
-    this.getOrderDetail(this.editData.orderId);
+    this.getOrderDetail(this.editData.id);
   }
 
 
@@ -41,9 +41,9 @@ export class OrdersDetailsComponent implements OnInit  {
           // alert("Product Deleted sucessfully");
           console.log(res);
           this.dataSource = new MatTableDataSource(res.orderItem);
-           
+
            this.responseData = res;
-           this.responseData = Array.of(this.responseData); 
+           this.responseData = Array.of(this.responseData);
            console.log(this.responseData);
         },
         error:()=>{

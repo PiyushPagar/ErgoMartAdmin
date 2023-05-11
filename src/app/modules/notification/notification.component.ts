@@ -37,7 +37,7 @@ export class NotificationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    
+
     this.searchForm = this.formBuilder.group({
       pagenum:0,
       id: '',

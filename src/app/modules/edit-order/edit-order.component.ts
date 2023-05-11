@@ -23,7 +23,7 @@ export class EditOrderComponent implements OnInit {
       orderId:[''],
       orderStatus: ['']
     })
-    this.orderForm.controls['orderId'].setValue(this.editData.orderId);
+    this.orderForm.controls['orderId'].setValue(this.editData.id);
     this.orderForm.controls['orderStatus'].setValue(this.editData.orderStatus);
   }
 
@@ -32,7 +32,7 @@ export class EditOrderComponent implements OnInit {
     this.api.postorder(this.orderForm.value)
     .subscribe({
       next:(res)=>{
-        alert("Product updated sucessful");
+        alert("Order updated sucessful");
         console.log(res);
         console.log(this.orderForm.value);
         this.orderForm.reset;

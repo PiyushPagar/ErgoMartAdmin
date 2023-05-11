@@ -12,7 +12,6 @@ import { SharedModule } from "./shared/shared.module";
 import { ShowRevenueCardComponent } from './modules/dashboard/show-revenue-card/show-revenue-card.component';
 
 
-
 const routes: Routes = [
 
 ];

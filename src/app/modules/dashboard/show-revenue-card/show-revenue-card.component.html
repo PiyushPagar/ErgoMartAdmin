@@ -11,15 +11,21 @@
   <tbody>
     <tr>
       <td class="text-center">Today</td>
-      <td class="text-center">{{todaysrevenue}}</td>
-      <td class="text-center">{{todaysadr}}</td>
-      <td class="text-center">{{todaysorders}}</td>
+      <td class="text-center">{{performanceData.todaysPerformance.revenue.toFixed(2)}}</td>
+      <td class="text-center">{{performanceData.todaysPerformance.adr.toFixed(2)}}</td>
+      <td class="text-center">{{performanceData.todaysPerformance.orders}}</td>
     </tr>
     <tr>
       <td class="text-center">This Month</td>
-      <td class="text-center">{{monthsRevenue}}</td>
-      <td class="text-center">{{monthsadr}}</td>
-      <td class="text-center">{{monthsorders}}</td>
+      <td class="text-center">{{performanceData.currentMonthPerformance.revenue.toFixed(2)}}</td>
+      <td class="text-center">{{performanceData.currentMonthPerformance.adr.toFixed(2)}}</td>
+      <td class="text-center">{{performanceData.currentMonthPerformance.orders}}</td>
+    </tr>
+    <tr>
+      <td class="text-center">Last Month</td>
+      <td class="text-center">{{performanceData.lastMonthPerformance.revenue.toFixed(2)}}</td>
+      <td class="text-center">{{performanceData.lastMonthPerformance.adr.toFixed(2)}}</td>
+      <td class="text-center">{{performanceData.lastMonthPerformance.orders}}</td>
     </tr>
   </tbody>
 </table>

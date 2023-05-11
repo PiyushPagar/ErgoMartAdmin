@@ -36,6 +36,10 @@ import { AddUserComponent } from 'src/app/modules/add-user/add-user.component';
 import { AddCategoryComponent } from 'src/app/modules/add-category/add-category.component';
 import { AddDiscountComponent } from 'src/app/modules/add-discount/add-discount.component';
 import { AddOfferComponent } from 'src/app/modules/add-offer/add-offer.component';
+import { SettingsComponent } from 'src/app/modules/settings/settings.component';
+import { ApplicationParameterComponent } from './../../modules/application-parameter/application-parameter.component';
+import { AddApplicationParameterComponent } from 'src/app/modules/add-application-parameter/add-application-parameter.component';
+import { ConfirmationdialogComponent } from 'src/app/modules/confirmationdialog/confirmationdialog.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +59,11 @@ import { AddOfferComponent } from 'src/app/modules/add-offer/add-offer.component
     AddUserComponent,
     AddCategoryComponent,
     AddDiscountComponent,
-    AddOfferComponent
+    AddOfferComponent,
+    SettingsComponent,
+    ApplicationParameterComponent,
+    AddApplicationParameterComponent,
+    ConfirmationdialogComponent
   ],
   imports: [
     BrowserModule,
