@@ -116,7 +116,7 @@ export class AddproductComponent implements OnInit  {
   addNewProduct() {
     const imageData = new FormData();
     imageData.append('image', this.imageFile);
-    if(this.actionBtn=="Add Product"){
+    if(this.dialogTitle=="Add Product"){
       if(this.productForm.valid){
         const param = new HttpParams()
         .set('name', this.productForm.value.productName)
@@ -141,8 +141,8 @@ export class AddproductComponent implements OnInit  {
           next: (res) => {
             console.log(res);
             console.log(this.productForm.value);
-            this.editData.parent.getAllProducts();
             alert("product Added Successfully");
+            this.editData.parent.getAllProducts();
           },
           error: () => {
             alert("product not added something went wrong");

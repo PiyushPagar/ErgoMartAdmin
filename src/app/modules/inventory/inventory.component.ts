@@ -13,6 +13,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { GlobalComponent } from 'src/app/GlobalVeriables/global-component';
 import { ProductapiService } from 'src/app/_services/product/productapi.service';
 import { ViewImageComponent } from '../view-image/view-image.component';
+import { ConfirmationdialogComponent } from '../confirmationdialog/confirmationdialog.component';
 
 @Component({
   selector: 'app-inventory',
@@ -69,9 +70,9 @@ export class InventoryComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((val) => {
-        if (val === 'save') {
+        // if (val === 'save') {
           this.getAllProducts();
-        }
+        // }
       });
   }
 
@@ -128,18 +129,43 @@ export class InventoryComponent implements OnInit {
       });
   }
 
-  deleteProduct(id: number) {
-    this.api.deleteProduct(id).subscribe({
-      next: (res) => {
-        alert('Product Deleted sucessfully');
-        console.log(res);
-        this.getAllProducts();
-      },
-      error: () => {
-        alert('error');
-      },
+  deleteProduct(id: number){
+    this.dialog
+    .open(ConfirmationdialogComponent, {
+      width: '400px',
+      height:'180px',
+      data:{ message: 'Are you sure you want to delete this Product ?'},
+    })
+    .afterClosed()
+    .subscribe((confirm) => {
+      if(confirm){
+        this.api.deleteProduct(id).subscribe({
+          next:(res)=>{
+            alert('Product Deleted Sucessfully'),
+            this.getAllProducts();
+            console.log(res);
+          },
+          error:(res)=>{
+            alert('Something went Wrong product not deleted'),
+            console.log(res);
+          }
+        });
+      }
     });
   }
+
+  // deleteProduct(id: number) {
+  //   this.api.deleteProduct(id).subscribe({
+  //     next: (res) => {
+  //       alert('Product Deleted sucessfully');
+  //       console.log(res);
+  //       this.getAllProducts();
+  //     },
+  //     error: () => {
+  //       alert('error');
+  //     },
+  //   });
+  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -168,9 +194,9 @@ export class InventoryComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((val) => {
-        if (val === 'save') {
+        // if (val === 'save') {
           this.getAllProducts();
-        }
+        // }
       });
 
   }
@@ -181,9 +207,9 @@ export class InventoryComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((val) => {
-        if (val === 'save') {
+        // if (val === 'save') {
           this.getAllProducts();
-        }
+        // }
       });
   }
   addOffer(){
@@ -193,9 +219,9 @@ export class InventoryComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((val) => {
-        if (val === 'save') {
+        // if (val === 'save') {
           this.getAllProducts();
-        }
+        // }
       });
   }
 }

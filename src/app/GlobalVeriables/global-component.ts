@@ -1,8 +1,10 @@
 export class GlobalComponent {
  //
    //  public static appUrl: string = "http://158.85.243.11:8082/ergomart/";
-     public static appUrl: string = "http://localhost:8082/";
-     public static imageUrl: string = 'http://localhost:8082/api/auth/serveproducts/';
+    //  public static appUrl: string = "http://localhost:8082/";
+    //  public static imageUrl: string = 'http://localhost:8082/api/auth/serveproducts/';
+     public static appUrl: string = "http://52.66.117.3:8080/ergomart/";
+     public static imageUrl: string = 'http://52.66.117.3:8080/ergomart/api/auth/serveproducts/';
 
     //  aws hosting url
     // public static appUrl: string = 'http://ergomarthostingdockermysql-env.eba-vdwnnumj.us-east-1.elasticbeanstalk.com/';
